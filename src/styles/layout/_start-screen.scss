@@ -1,0 +1,35 @@
+.start-screen {
+  background-color: $color-primary-dark;
+  color: $color-accent-primary;
+
+  &__wrapper {
+    padding: 0.5rem 0.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__about {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    row-gap: 3rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 900;
+  }
+
+  &__description {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  &__image {
+    width: 50%;
+    border-radius: 0.5rem;
+  }
+}
