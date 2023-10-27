@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react';
 interface Props {
   additionalClassName?: string;
 }
@@ -9,3 +10,13 @@ export interface LogoProps extends Props {
 }
 
 export interface HeaderProps extends Props {}
+
+export interface SearchFormProps extends Props {
+  submitTitle: string;
+  inputPlaceholder?: string;
+}
+
+export interface SearchInputProps extends Props {
+  value: string;
+  setValue: (event: ChangeEvent<HTMLInputElement>) => void;
+}
