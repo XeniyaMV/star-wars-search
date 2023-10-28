@@ -1,4 +1,4 @@
-function getFullClassName(currentClassName: string, additionalClassName: string | undefined): string {
+function getFullClassName(currentClassName: string, additionalClassName?: string): string {
   return additionalClassName ? `${currentClassName} ${additionalClassName}` : currentClassName;
 }
 

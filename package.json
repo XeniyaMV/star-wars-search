@@ -43,7 +43,7 @@
     }
   },
   "lint-staged": {
-    "src/*": [
+    "src": [
       "npm run format:fix",
       "npm run lint"
     ]
