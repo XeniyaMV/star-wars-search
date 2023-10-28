@@ -34,16 +34,6 @@ const cardInfoExample: CardInfoResponse[] = [
     birth_year: '19BBY',
     gender: 'male',
   },
-  {
-    name: 'Luke Skywalker',
-    height: '172',
-    mass: '77',
-    hair_color: 'blond',
-    skin_color: 'fair',
-    eye_color: 'blue',
-    birth_year: '19BBY',
-    gender: 'male',
-  },
 ];
 
 class MainSection extends Component {

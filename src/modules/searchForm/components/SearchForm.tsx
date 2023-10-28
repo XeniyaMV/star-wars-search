@@ -24,7 +24,7 @@ class SearchForm extends Component<SearchFormProps> {
 
   private handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault();
-    console.log('click submit: ', this.state.searchTerm);
+    // console.log('click submit: ', this.state.searchTerm);
   }
 
   public render(): JSX.Element {
