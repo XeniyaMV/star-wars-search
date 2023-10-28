@@ -1,0 +1,24 @@
+.button {
+  cursor: pointer;
+  padding: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  background-color: $color-accent-primary;
+  border: 0.05rem solid $color-accent-primary;
+  border-radius: 0.4rem;
+  transition:
+    background-color 0.5s,
+    color 0.5s,
+    border-color 0.5s;
+
+  &:hover {
+    background-color: $color-accent-secondary-m;
+    border-color: $color-accent-secondary-m;
+  }
+
+  &:active {
+    color: $color-accent-primary;
+    background-color: $color-accent-secondary;
+    border-color: $color-accent-primary;
+  }
+}

@@ -1,4 +1,4 @@
-{
+  {
   "name": "react-layout-template",
   "private": true,
   "version": "0.0.0",
@@ -43,7 +43,7 @@
     }
   },
   "lint-staged": {
-    "src/*": [
+    "src/**/*.{ts,tsx}": [
       "npm run format:fix",
       "npm run lint"
     ]
