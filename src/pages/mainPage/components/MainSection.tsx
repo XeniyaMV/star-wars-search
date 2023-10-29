@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import SearchForm from '../../../modules/searchForm';
 import CharacterCards from '../../../modules/characterCards';
+import ErrorButton from './ErrorButton';
+import ErrorBoundary from '../../../modules/errorBoundary';
 import { Props, CardInfo } from '../../../types';
 
 class MainSection extends Component {
@@ -27,6 +29,9 @@ class MainSection extends Component {
     return (
       <main className="main">
         <div className="container main__wrapper">
+          <ErrorBoundary>
+            <ErrorButton />
+          </ErrorBoundary>
           <section className="search">
             <SearchForm
               submitTitle="Search"

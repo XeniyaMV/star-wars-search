@@ -2,6 +2,7 @@ import { ChangeEvent } from 'react';
 
 export interface Props {
   additionalClassName?: string;
+  children?: JSX.Element;
 }
 
 export interface SearchResponse {
@@ -70,4 +71,12 @@ export interface CharacterCardProps extends Props {
 export interface CharacterCardsProps extends Props {
   cardInfos: CardInfo[];
   loader?: boolean;
+}
+
+export interface ErrorMessageProps extends Props {
+  errorMessage: string;
+}
+
+export interface ErrorBoundaryState {
+  hasError: boolean;
 }

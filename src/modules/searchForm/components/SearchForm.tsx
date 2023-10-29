@@ -27,9 +27,11 @@ class SearchForm extends Component<SearchFormProps> {
 
   private async handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
+
     if (!this.props.loader) {
       if (this.props.setLoader) this.props.setLoader(true);
       const search = this.state.searchTerm.trim();
+      this.setState({ searchTerm: search });
       const result = await getSearchResult(apiBase.baseUrl, apiBase.path, search);
       localStorage.setItem('searchTerm', search);
       if (this.props.setCardInfos) this.props.setCardInfos(transformResponseToCardInfo(result));
