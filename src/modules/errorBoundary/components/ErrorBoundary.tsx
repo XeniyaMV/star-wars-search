@@ -1,5 +1,5 @@
 import { Component, ErrorInfo } from 'react';
-import ErrorMessage from '../../../components/errorMessage/ErrorMessage';
+import ErrorMessage from '../../../UI/errorMessage/ErrorMessage';
 import { Props, ErrorBoundaryState } from '../../../types';
 
 class ErrorBoundary extends Component<Props> {

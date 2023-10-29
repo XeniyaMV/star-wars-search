@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import CharacterCard from '../../../components/characterCard/CharacterCard';
-import Loader from '../../../components/loader/Loader';
+import Loader from '../../../UI/loader/Loader';
 import { CharacterCardsProps } from '../../../types';
 
 class CharacterCards extends Component<CharacterCardsProps> {

@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { HeaderProps } from '../../../types';
 import getFullClassName from '../../../helpers/getFullClassName';
-import Logo from '../../../components/logo/Logo';
+import Logo from '../../../UI/logo/Logo';
 
 import logo from '../../../assets/logo-primary.png';
 
