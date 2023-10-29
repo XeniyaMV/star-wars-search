@@ -27,19 +27,23 @@ class SearchForm extends Component<SearchFormProps> {
 
   private async handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
-    const search = this.state.searchTerm.trim();
-    if (this.props.setLoader) this.props.setLoader(true);
-    const result = await getSearchResult(apiBase.baseUrl, apiBase.path, search);
-    localStorage.setItem('searchTerm', search);
-    if (this.props.setCardInfos) this.props.setCardInfos(transformResponseToCardInfo(result));
-    if (this.props.setLoader) this.props.setLoader(false);
+    if (!this.props.loader) {
+      if (this.props.setLoader) this.props.setLoader(true);
+      const search = this.state.searchTerm.trim();
+      const result = await getSearchResult(apiBase.baseUrl, apiBase.path, search);
+      localStorage.setItem('searchTerm', search);
+      if (this.props.setCardInfos) this.props.setCardInfos(transformResponseToCardInfo(result));
+      if (this.props.setLoader) this.props.setLoader(false);
+    }
   }
 
   public async componentDidMount(): Promise<void> {
-    if (this.props.setLoader) this.props.setLoader(true);
-    const result = await getSearchResult(apiBase.baseUrl, apiBase.path, this.state.searchTerm);
-    if (this.props.setCardInfos) this.props.setCardInfos(transformResponseToCardInfo(result));
-    if (this.props.setLoader) this.props.setLoader(false);
+    if (!this.props.loader) {
+      if (this.props.setLoader) this.props.setLoader(true);
+      const result = await getSearchResult(apiBase.baseUrl, apiBase.path, this.state.searchTerm);
+      if (this.props.setCardInfos) this.props.setCardInfos(transformResponseToCardInfo(result));
+      if (this.props.setLoader) this.props.setLoader(false);
+    }
   }
 
   public render(): JSX.Element {
@@ -50,7 +54,11 @@ class SearchForm extends Component<SearchFormProps> {
           setValue={this.handleInputChange}
           inputPlaceholder={this.props.inputPlaceholder}
         />
-        <button className="button search-form__submit" type="submit">
+        <button
+          className={`button search-form__submit ${this.props.loader ? 'button_disabled' : ''}`}
+          type="submit"
+          disabled={this.props.loader}
+        >
           {this.props.submitTitle}
         </button>
       </form>

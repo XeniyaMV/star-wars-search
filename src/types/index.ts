@@ -52,6 +52,7 @@ export interface HeaderProps extends Props {}
 export interface SearchFormProps extends Props {
   submitTitle: string;
   inputPlaceholder?: string;
+  loader?: boolean;
   setCardInfos?: (value: CardInfo[]) => void;
   setLoader?: (value: boolean) => void;
 }

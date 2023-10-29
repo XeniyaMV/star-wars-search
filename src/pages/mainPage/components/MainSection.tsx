@@ -31,6 +31,7 @@ class MainSection extends Component {
             <SearchForm
               submitTitle="Search"
               inputPlaceholder="Enter a Star Wars character"
+              loader={this.state.loader}
               setCardInfos={this.setCardInfos}
               setLoader={this.setLoader}
             />
