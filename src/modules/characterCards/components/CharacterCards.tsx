@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import CharacterCard from '../../../components/characterCard/CharacterCard';
+import Loader from '../../../components/loader/Loader';
 import { CharacterCardsProps } from '../../../types';
 
 class CharacterCards extends Component<CharacterCardsProps> {
@@ -7,9 +8,11 @@ class CharacterCards extends Component<CharacterCardsProps> {
     return (
       <section className="character-cards">
         <div className="container character-cards__wrapper">
-          {this.props.cardInfos.map((item) => (
-            <CharacterCard key={item.name} cardInfo={item} />
-          ))}
+          {!this.props.loader ? (
+            this.props.cardInfos.map((item) => <CharacterCard key={item.name} cardInfo={item} />)
+          ) : (
+            <Loader />
+          )}
         </div>
       </section>
     );

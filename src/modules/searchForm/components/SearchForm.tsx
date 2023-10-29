@@ -10,7 +10,7 @@ import SearchInput from './SearchInput';
 
 class SearchForm extends Component<SearchFormProps> {
   public state = {
-    searchTerm: '',
+    searchTerm: localStorage.getItem('searchTerm') || '',
   };
 
   private fullClassName = getFullClassName('search-form', this.props.additionalClassName);
@@ -27,8 +27,19 @@ class SearchForm extends Component<SearchFormProps> {
 
   private async handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
+    const search = this.state.searchTerm.trim();
+    if (this.props.setLoader) this.props.setLoader(true);
+    const result = await getSearchResult(apiBase.baseUrl, apiBase.path, search);
+    localStorage.setItem('searchTerm', search);
+    if (this.props.setCardInfos) this.props.setCardInfos(transformResponseToCardInfo(result));
+    if (this.props.setLoader) this.props.setLoader(false);
+  }
+
+  public async componentDidMount(): Promise<void> {
+    if (this.props.setLoader) this.props.setLoader(true);
     const result = await getSearchResult(apiBase.baseUrl, apiBase.path, this.state.searchTerm);
     if (this.props.setCardInfos) this.props.setCardInfos(transformResponseToCardInfo(result));
+    if (this.props.setLoader) this.props.setLoader(false);
   }
 
   public render(): JSX.Element {

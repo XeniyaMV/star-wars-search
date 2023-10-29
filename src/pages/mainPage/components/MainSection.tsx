@@ -6,15 +6,21 @@ import { Props, CardInfo } from '../../../types';
 class MainSection extends Component {
   public state = {
     cardInfos: [],
+    loader: false,
   };
 
   constructor(props: Props) {
     super(props);
     this.setCardInfos = this.setCardInfos.bind(this);
+    this.setLoader = this.setLoader.bind(this);
   }
 
   private setCardInfos(cardInfos: CardInfo[]): void {
     this.setState({ cardInfos });
+  }
+
+  private setLoader(loader: boolean): void {
+    this.setState({ loader });
   }
 
   public render(): JSX.Element {
@@ -26,9 +32,10 @@ class MainSection extends Component {
               submitTitle="Search"
               inputPlaceholder="Enter a Star Wars character"
               setCardInfos={this.setCardInfos}
+              setLoader={this.setLoader}
             />
           </section>
-          <CharacterCards cardInfos={this.state.cardInfos} />
+          <CharacterCards cardInfos={this.state.cardInfos} loader={this.state.loader} />
         </div>
       </main>
     );
