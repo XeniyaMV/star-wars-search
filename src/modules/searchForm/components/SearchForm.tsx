@@ -1,7 +1,7 @@
 import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
 import { SearchFormProps } from '../../../types';
-import getSearchResult from '../api/getSearchResult';
-import apiBase from '../constants/apiBase';
+import getSearchResult from '../../../api/helpers/getSearchResult';
+import apiBase from '../../../api/constants/apiBase';
 import transformResponseToCardInfo from '../helpers/transformResponseToCardInfo';
 import getFullClassName from '../../../helpers/getFullClassName';
 import SearchInput from './SearchInput';

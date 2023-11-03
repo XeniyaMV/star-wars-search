@@ -1,5 +1,5 @@
-import { CardInfoResponse } from '../../../types';
-import { SearchResponse } from '../../../types';
+import { CardInfoResponse } from '../../types';
+import { SearchResponse } from '../../types';
 
 async function getSearchResult(
   baseUrl: string,
