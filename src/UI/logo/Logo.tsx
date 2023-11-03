@@ -1,18 +1,15 @@
-import { Component } from 'react';
 import { LogoProps } from '../../types';
 import getFullClassName from '../../helpers/getFullClassName';
 
-class Logo extends Component<LogoProps> {
-  private fullClassName = getFullClassName('logo', this.props.additionalClassName);
+const Logo = (props: LogoProps): JSX.Element => {
+  const fullClassName = getFullClassName('logo', props.additionalClassName);
 
-  public render(): JSX.Element {
-    return (
-      <a className={this.fullClassName} href={`${this.props.link}`}>
-        <h1 className="logo__title">{this.props.title}</h1>
-        {this.props.iconUrl && <img className="logo__icon" src={`${this.props.iconUrl}`} alt="logo icon" />}
-      </a>
-    );
-  }
-}
+  return (
+    <a className={fullClassName} href={`${props.link}`}>
+      <h1 className="logo__title">{props.title}</h1>
+      {props.iconUrl && <img className="logo__icon" src={`${props.iconUrl}`} alt="logo icon" />}
+    </a>
+  );
+};
 
 export default Logo;
