@@ -18,7 +18,14 @@ class ErrorBoundary extends Component<Props> {
 
   public render(): JSX.Element {
     if (this.state.hasError) {
-      return <ErrorMessage errorMessage="Oops... Something went wrong" />;
+      return (
+        <section className="error-section">
+          <ErrorMessage additionalClassName="error-section__message" errorMessage="Oops... Something went wrong" />
+          <button className="button error-section__reload" onClick={(): void => this.setState({ hasError: false })}>
+            Reload page
+          </button>
+        </section>
+      );
     }
     return this.props.children || <></>;
   }
