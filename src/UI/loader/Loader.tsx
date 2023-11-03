@@ -1,13 +1,9 @@
-import { Component } from 'react';
 import { Props } from '../../types';
 import getFullClassName from '../../helpers/getFullClassName';
 
-class Loader extends Component<Props> {
-  private fullClassName = getFullClassName('loader', this.props.additionalClassName);
-
-  public render(): JSX.Element {
-    return <div className={this.fullClassName} />;
-  }
-}
+const Loader = (props: Props): JSX.Element => {
+  const fullClassName = getFullClassName('loader', props.additionalClassName);
+  return <div className={fullClassName} />;
+};
 
 export default Loader;
