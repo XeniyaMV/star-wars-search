@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SearchForm from '../../../modules/searchForm';
 import CharacterCards from '../../../modules/characterCards';
+import Pagination from '../../../modules/pagination';
 import ErrorButton from './ErrorButton';
 import { CardInfo } from '../../../types';
 
@@ -22,6 +23,7 @@ const MainSection = (): JSX.Element => {
           />
         </section>
         <CharacterCards cardInfos={cardInfos} loader={loader} />
+        <Pagination />
       </div>
     </main>
   );
