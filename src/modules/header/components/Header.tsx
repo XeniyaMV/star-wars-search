@@ -9,7 +9,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   return (
     <header className={fullClassName}>
       <div className="container header__wrapper">
-        <Logo additionalClassName="header__logo" link="#" iconUrl={logo} />
+        <Logo additionalClassName="header__logo" link="/" iconUrl={logo} />
       </div>
     </header>
   );
