@@ -20,4 +20,16 @@
   &__page-number {
     cursor: default;
   }
+
+  @media screen and (max-width: 992px) {
+    width: 20%;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 30%;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 35%;
+  }
 }
