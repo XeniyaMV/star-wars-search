@@ -54,7 +54,7 @@ export interface SearchFormProps extends Props {
   submitTitle: string;
   inputPlaceholder?: string;
   loader?: boolean;
-  setCardInfos?: (value: CardInfo[]) => void;
+  setCardInfos?: (value: CardInfoResponse[]) => void;
   setLoader?: (value: boolean) => void;
 }
 
@@ -69,7 +69,7 @@ export interface CharacterCardProps extends Props {
 }
 
 export interface CharacterCardsProps extends Props {
-  cardInfos: CardInfo[];
+  cardInfos: CardInfoResponse[];
   loader?: boolean;
 }
 
@@ -79,4 +79,15 @@ export interface ErrorMessageProps extends Props {
 
 export interface ErrorBoundaryState {
   hasError: boolean;
+}
+
+export interface PaginationProps extends Props {
+  page: number;
+  hasNext: boolean;
+  hasPrev: boolean;
+  setPage: (value: number) => void;
+  setHasNext: (value: boolean) => void;
+  setHasPrev: (value: boolean) => void;
+  setCardInfos: (value: CardInfoResponse[]) => void;
+  setLoader?: (value: boolean) => void;
 }

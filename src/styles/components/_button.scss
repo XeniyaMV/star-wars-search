@@ -14,6 +14,17 @@
     color 0.5s,
     border-color 0.5s;
 
+  &:hover {
+    background-color: $color-accent-secondary-m;
+    border-color: $color-accent-secondary-m;
+  }
+
+  &:active {
+    color: $color-accent-primary;
+    background-color: $color-accent-secondary;
+    border-color: $color-accent-primary;
+  }
+
   &_disabled {
     cursor: default;
     color: $color-primary-light;
@@ -34,14 +45,4 @@
     }
   }
 
-  &:hover {
-    background-color: $color-accent-secondary-m;
-    border-color: $color-accent-secondary-m;
-  }
-
-  &:active {
-    color: $color-accent-primary;
-    background-color: $color-accent-secondary;
-    border-color: $color-accent-primary;
-  }
 }

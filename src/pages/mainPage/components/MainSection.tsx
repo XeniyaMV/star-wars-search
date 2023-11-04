@@ -3,11 +3,15 @@ import SearchForm from '../../../modules/searchForm';
 import CharacterCards from '../../../modules/characterCards';
 import Pagination from '../../../modules/pagination';
 import ErrorButton from './ErrorButton';
-import { CardInfo } from '../../../types';
+import { CardInfoResponse } from '../../../types';
 
 const MainSection = (): JSX.Element => {
-  const [cardInfos, setCardInfos] = useState<CardInfo[]>([]);
+  const [cardInfos, setCardInfos] = useState<CardInfoResponse[]>([]);
   const [loader, setLoader] = useState(false);
+
+  const [page, setPage] = useState(1);
+  const [hasNext, setHasNext] = useState(true);
+  const [hasPrev, setHasPrev] = useState(false);
 
   return (
     <main className="main">
@@ -23,7 +27,18 @@ const MainSection = (): JSX.Element => {
           />
         </section>
         <CharacterCards cardInfos={cardInfos} loader={loader} />
-        <Pagination />
+        {!loader && (
+          <Pagination
+            page={page}
+            hasNext={hasNext}
+            hasPrev={hasPrev}
+            setPage={setPage}
+            setHasNext={setHasNext}
+            setHasPrev={setHasPrev}
+            setCardInfos={setCardInfos}
+            setLoader={setLoader}
+          />
+        )}
       </div>
     </main>
   );

@@ -2,7 +2,6 @@ import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
 import { SearchFormProps } from '../../../types';
 import getSearchResult from '../../../api/helpers/getSearchResult';
 import apiBase from '../../../api/constants/apiBase';
-import transformResponseToCardInfo from '../helpers/transformResponseToCardInfo';
 import getFullClassName from '../../../helpers/getFullClassName';
 import SearchInput from './SearchInput';
 
@@ -15,7 +14,7 @@ const SearchForm = (props: SearchFormProps): JSX.Element => {
       if (!props.loader) {
         if (props.setLoader) props.setLoader(true);
         const result = await getSearchResult(apiBase.baseUrl, apiBase.path, searchTerm);
-        if (props.setCardInfos) props.setCardInfos(transformResponseToCardInfo(result));
+        if (props.setCardInfos) props.setCardInfos(result.results);
         if (props.setLoader) props.setLoader(false);
       }
     };
@@ -37,7 +36,7 @@ const SearchForm = (props: SearchFormProps): JSX.Element => {
       setSearchTerm(search);
       const result = await getSearchResult(apiBase.baseUrl, apiBase.path, search);
       localStorage.setItem('searchTerm', search);
-      if (props.setCardInfos) props.setCardInfos(transformResponseToCardInfo(result));
+      if (props.setCardInfos) props.setCardInfos(result.results);
       if (props.setLoader) props.setLoader(false);
     }
   };
