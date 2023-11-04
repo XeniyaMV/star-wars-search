@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import SearchForm from '../../../modules/searchForm';
 import CharacterCards from '../../../modules/characterCards';
 import Pagination from '../../../modules/pagination';
@@ -7,6 +8,7 @@ import { CardInfoResponse } from '../../../types';
 
 const MainSection = (): JSX.Element => {
   const [cardInfos, setCardInfos] = useState<CardInfoResponse[]>([]);
+
   const [loader, setLoader] = useState(false);
 
   const [hasNext, setHasNext] = useState(true);
@@ -28,6 +30,7 @@ const MainSection = (): JSX.Element => {
           />
         </section>
         <CharacterCards cardInfos={cardInfos} loader={loader} />
+        <Outlet />
         {!loader && (
           <Pagination
             hasNext={hasNext}
