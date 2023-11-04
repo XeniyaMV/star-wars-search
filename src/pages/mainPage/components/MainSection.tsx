@@ -9,7 +9,6 @@ const MainSection = (): JSX.Element => {
   const [cardInfos, setCardInfos] = useState<CardInfoResponse[]>([]);
   const [loader, setLoader] = useState(false);
 
-  const [page, setPage] = useState(1);
   const [hasNext, setHasNext] = useState(true);
   const [hasPrev, setHasPrev] = useState(false);
 
@@ -24,15 +23,15 @@ const MainSection = (): JSX.Element => {
             loader={loader}
             setCardInfos={setCardInfos}
             setLoader={setLoader}
+            setHasNextPage={setHasNext}
+            setHasPrevPage={setHasPrev}
           />
         </section>
         <CharacterCards cardInfos={cardInfos} loader={loader} />
         {!loader && (
           <Pagination
-            page={page}
             hasNext={hasNext}
             hasPrev={hasPrev}
-            setPage={setPage}
             setHasNext={setHasNext}
             setHasPrev={setHasPrev}
             setCardInfos={setCardInfos}

@@ -1,4 +1,5 @@
 import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { SearchFormProps } from '../../../types';
 import getSearchResult from '../../../api/helpers/getSearchResult';
 import apiBase from '../../../api/constants/apiBase';
@@ -7,14 +8,26 @@ import SearchInput from './SearchInput';
 
 const SearchForm = (props: SearchFormProps): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState(localStorage.getItem('searchTerm') || '');
+  const [searchParams, setSearchParams] = useSearchParams();
   const fullClassName = getFullClassName('search-form', props.additionalClassName);
+
+  const setNewInfo = async (searchTerm: string, page?: number): Promise<void> => {
+    const result = await getSearchResult(apiBase.baseUrl, apiBase.path, searchTerm, page);
+    if (props.setCardInfos) props.setCardInfos(result.results);
+    if (props.setHasNextPage && props.setHasPrevPage) {
+      result.next === null ? props.setHasNextPage(false) : props.setHasNextPage(true);
+      result.previous === null ? props.setHasPrevPage(false) : props.setHasPrevPage(true);
+    }
+  };
 
   useEffect((): void => {
     const fetchData = async (): Promise<void> => {
       if (!props.loader) {
         if (props.setLoader) props.setLoader(true);
-        const result = await getSearchResult(apiBase.baseUrl, apiBase.path, searchTerm);
-        if (props.setCardInfos) props.setCardInfos(result.results);
+
+        const pageQuaryParam = searchParams.get('page');
+        await setNewInfo(searchTerm, pageQuaryParam ? +pageQuaryParam : 1);
+
         if (props.setLoader) props.setLoader(false);
       }
     };
@@ -29,14 +42,15 @@ const SearchForm = (props: SearchFormProps): JSX.Element => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
-
     if (!props.loader) {
       if (props.setLoader) props.setLoader(true);
+
+      setSearchParams({ page: '1' });
       const search = searchTerm.trim();
       setSearchTerm(search);
-      const result = await getSearchResult(apiBase.baseUrl, apiBase.path, search);
+      await setNewInfo(search);
       localStorage.setItem('searchTerm', search);
-      if (props.setCardInfos) props.setCardInfos(result.results);
+
       if (props.setLoader) props.setLoader(false);
     }
   };
