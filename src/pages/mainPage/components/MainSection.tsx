@@ -29,18 +29,22 @@ const MainSection = (): JSX.Element => {
             setHasPrevPage={setHasPrev}
           />
         </section>
-        <CharacterCards cardInfos={cardInfos} loader={loader} />
-        <Outlet />
-        {!loader && (
-          <Pagination
-            hasNext={hasNext}
-            hasPrev={hasPrev}
-            setHasNext={setHasNext}
-            setHasPrev={setHasPrev}
-            setCardInfos={setCardInfos}
-            setLoader={setLoader}
-          />
-        )}
+        <div className="main__search-results-wrapper">
+          <div className="main__search-results">
+            <CharacterCards cardInfos={cardInfos} loader={loader} />
+            {!loader && (
+              <Pagination
+                hasNext={hasNext}
+                hasPrev={hasPrev}
+                setHasNext={setHasNext}
+                setHasPrev={setHasPrev}
+                setCardInfos={setCardInfos}
+                setLoader={setLoader}
+              />
+            )}
+          </div>
+          <Outlet />
+        </div>
       </div>
     </main>
   );
