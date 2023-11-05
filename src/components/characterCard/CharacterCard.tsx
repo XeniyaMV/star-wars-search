@@ -1,11 +1,11 @@
 import { Link, useSearchParams } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
 import { CharacterCardProps } from '../../types';
 import getFullClassName from '../../helpers/getFullClassName';
 import cardImg from '../../assets/card-picture.jpg';
 
 const CharacterCard = (props: CharacterCardProps): JSX.Element => {
   const fullClassName = getFullClassName('character-card', props.additionalClassName);
+
   const [searchParams] = useSearchParams();
 
   return (
