@@ -9,7 +9,10 @@ const CharacterCard = (props: CharacterCardProps): JSX.Element => {
   const [searchParams] = useSearchParams();
 
   return (
-    <Link className={fullClassName} to={`/details/?page=${searchParams.get('page')}&details=${props.cardInfo.name}`}>
+    <Link
+      className={fullClassName}
+      to={`/details/?page=${searchParams.get('page') ? searchParams.get('page') : 1}&details=${props.cardInfo.name}`}
+    >
       <ul className="list character-card__info">
         {Object.entries(props.cardInfo).map((item) => (
           <li key={item[0].concat(`: ${item[1]}`)} className="list__item">
