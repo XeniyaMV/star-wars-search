@@ -23,7 +23,9 @@
     top: 2rem;
     right: 0;
     transform: rotate(45deg);
-    transition: width 0.5s, height 0.5s;
+    transition:
+      width 0.5s,
+      height 0.5s;
 
     &:hover {
       width: 2.7rem;

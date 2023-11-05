@@ -2,7 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import RootLayout from './RootLayout';
 import MainPage from '../pages/mainPage/components/MainPage';
 import ErrorPage from '../pages/errorPage/components/ErrorPage';
-import Details from '../modules/details/components/Details';
+import Details from '../modules/details';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -10,7 +10,6 @@ const router = createBrowserRouter(
       <Route path="/" element={<MainPage />}>
         <Route path="details" element={<Details />} />
       </Route>
-      {/* <Route path="details" element={<Details />} /> */}
     </Route>
   )
 );
